@@ -11,6 +11,9 @@ app.use('/arbitros', arbitrosRouter)
 const estadiosRouter = require('./routers/estadios')
 app.use('/estadios', estadiosRouter)
 
+const jogosRouter = require('./routers/jogos')
+app.use('/jogos', jogosRouter)
+
 app.get('/', (req,res)=>{
   res.json({ ok:true })
 })

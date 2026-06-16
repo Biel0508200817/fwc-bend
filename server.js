@@ -1,55 +1,11 @@
-require('dotenv').config()
-
 const express = require('express')
-const cors = require('cors')
-
-const logger = require('./middleware/logger')
-const errorHandler = require('./middleware/errorHandler')
-
-const selecoesRouter = require('./routers/selecoes')
-const arbitrosRouter = require('./routers/arbitros')
-const estadiosRouter = require('./routers/estadios')
-const jogosRouter = require('./routers/jogos')
-const avaliacoesRouter = require('./routers/avaliacoes')
 
 const app = express()
 
-app.use(cors())
-
-app.use(express.json())
-
-app.use(logger)
-
 app.get('/', (req, res) => {
-
-    res.status(200).json({
-        projeto: 'Central do Apito',
-        status: 'online',
-        versao: '1.0.0'
-    })
-
+  res.json({
+    ok: true
+  })
 })
-
-app.use('/selecoes', selecoesRouter)
-
-app.use('/arbitros', arbitrosRouter)
-
-app.use('/estadios', estadiosRouter)
-
-app.use('/jogos', jogosRouter)
-
-app.use('/avaliacoes', avaliacoesRouter)
-
-app.use(errorHandler)
-
-const PORT = process.env.PORT || 3000
-
-const PORT = process.env.PORT || 3000
-
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Servidor rodando na porta ${PORT}`)
-    })
-}
 
 module.exports = app

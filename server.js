@@ -5,6 +5,9 @@ const logger = require('./middleware/logger')
 
 app.use(logger)
 
+const arbitrosRouter = require('./routers/arbitros')
+app.use('/arbitros', arbitrosRouter)
+
 app.get('/', (req,res)=>{
   res.json({ ok:true })
 })

@@ -8,4 +8,6 @@ app.get('/', (req, res) => {
   })
 })
 
+const logger = require('./middleware/logger')
+app.use(logger)
 module.exports = app
